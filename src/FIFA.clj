@@ -6,8 +6,7 @@
 
 (defn getpairs [plrs]
   (partition 2 (shuffle plrs)))
-(def pairs (getpairs players))
-(def results (map vector teams pairs))
+
 (println (reduce (fn [_ [t p]]
                    (println
                      (format "Team: %s -> Players: %s" t
@@ -15,4 +14,7 @@
                              )
                      )
                    )
-                 nil results))
+                 nil
+                 (map vector teams
+                      (getpairs players)
+                      )))
